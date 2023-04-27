@@ -11,8 +11,7 @@ import static java.lang.Thread.sleep;
 public class RozetkaTest {
 
     @Test
-    public void checkTestRoz() throws InterruptedException {
-
+    public void checkTestRozetka() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://rozetka.com.ua/");
@@ -24,7 +23,5 @@ public class RozetkaTest {
         driver.findElement(By.xpath("//button[@id='fat-menu']")).click();
         sleep(3000);
         driver.findElement(By.xpath("//button[@id='fat-menu']")).click();
-
-
     }
 }
