@@ -24,8 +24,6 @@ public class RozetkaTest {
         driver.findElement(By.xpath("//button[@id='fat-menu']")).click();
         sleep(3000);
         driver.findElement(By.xpath("//button[@id='fat-menu']")).click();
-       // driver.findElement(By.xpath("//input[@placeholder='Я ищу...']")).sendKeys("iphone 14 pro max");
-       // driver.findElement(By.xpath("//button[@class='button button_color_green button_size_medium search-form__submit ng-star-inserted']")).click();
 
 
     }
