@@ -1,18 +1,12 @@
 package amazonTest;
 
-import jdk.internal.event.Event;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.imageio.stream.ImageInputStream;
 
 import static java.lang.Thread.sleep;
 import static org.testng.Assert.*;
@@ -24,9 +18,12 @@ public class TestQA {
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/text-box/");
         driver.findElement(By.xpath("//input[@placeholder='Full Name']")).sendKeys("Max 23");
-        driver.findElement(By.xpath("//input[@placeholder='name@example.com']")).sendKeys("12345@gmail.com");
-        driver.findElement(By.xpath("//textarea[@placeholder='Current Address']")).sendKeys("Lutsk, Volunskaya oblast");
-        driver.findElement(By.xpath("//textarea[@id='permanentAddress']")).sendKeys("Address qwerty");
+        driver.findElement(By.xpath("//input[@placeholder='name@example.com']"))
+                .sendKeys("12345@gmail.com");
+        driver.findElement(By.xpath("//textarea[@placeholder='Current Address']"))
+                .sendKeys("Lutsk, Volunskaya oblast");
+        driver.findElement(By.xpath("//textarea[@id='permanentAddress']"))
+                .sendKeys("Address qwerty");
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
@@ -43,14 +40,13 @@ public class TestQA {
     }
 
     @Test
-    public void TestCheck() throws InterruptedException {
-
+    public void testCheck() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/checkbox");
         driver.findElement(By.xpath("(//button[@aria-label='Toggle'])[1]")).click();
         sleep(2000);
-        driver.findElement(By.xpath("//li[@class=\"rct-node rct-node-parent rct-node-expanded\"]//li[3]//button")).click();
+        driver.findElement(By.xpath("//li[@class='rct-node rct-node-parent rct-node-expanded']//li[3]//button")).click();
         sleep(2000);
         driver.findElement(By.xpath("//label[@for='tree-node-excelFile']//span[@class='rct-checkbox']")).click();
 
@@ -60,14 +56,13 @@ public class TestQA {
     }
 
     @Test
-    public void TestRadioButton() throws InterruptedException {
-
+    public void checkRadioButton() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/radio-button");
 
         assertEquals(driver.findElement(By.xpath("//div[@class='main-header']")).getText(), "Radio Button");
-        // sleep(3000);
+
         driver.findElement(By.xpath("//label[@for='yesRadio']")).click();
 
         assertEquals(driver.findElement(By.xpath("//span[@class='text-success']")).getText(), "Yes");
@@ -81,11 +76,10 @@ public class TestQA {
         assertNotEquals(driver.findElement(By.xpath("//span[@class='text-success']")).getText(), "No");
 
         //driver.quit();
-
     }
 
     @Test
-    public void TestWebTables() throws InterruptedException {
+    public void checkWebTables() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/");
@@ -124,10 +118,12 @@ public class TestQA {
         driver.findElement(By.xpath("//input[@value='10000']")).clear();
         sleep(1000);
         driver.findElement(By.xpath("//input[@id='salary']")).sendKeys("12345");
+
         driver.findElement(By.xpath("//input[@value='Insurance']")).clear();
         sleep(1000);
         driver.findElement(By.xpath("//input[@id='department']")).sendKeys("TestClub");
         sleep(1000);
+
         driver.findElement(By.xpath("//button[@id='submit']")).click();
         //driver.quit();
 
@@ -137,11 +133,10 @@ public class TestQA {
         assertEquals(driver.findElement(By.xpath("//div[@class='rt-td'][4]")).getText(), "12345@gmail.com");
         assertEquals(driver.findElement(By.xpath("//div[@class='rt-td'][5]")).getText(), "12345");
         assertEquals(driver.findElement(By.xpath("//div[@class='rt-td'][6]")).getText(), "TestClub");
-
     }
 
     @Test //(enabled = false)
-    public void TestButtons() throws InterruptedException {
+    public void checkButtons() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/buttons");
@@ -159,12 +154,10 @@ public class TestQA {
         assertEquals(driver.findElement(By.xpath("//p[@id='doubleClickMessage']")).getText(), "You have done a double click");
         assertEquals(driver.findElement(By.xpath("//p[@id='rightClickMessage']")).getText(), "You have done a right click");
         assertEquals(driver.findElement(By.xpath("//p[@id='dynamicClickMessage']")).getText(), "You have done a dynamic click");
-
-
     }
 
     @Test
-    public void TestLinks() throws InterruptedException {
+    public void testLinks() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/links");
@@ -231,12 +224,10 @@ public class TestQA {
         assertTrue(resultNotFound.contains("404") && (resultNotFound.contains("Not Found")));
 
         driver.quit();
-
     }
 
     @Test
-    public void BrockenListImages() throws InterruptedException {
-
+    public void brokenListImages() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/");
@@ -252,10 +243,7 @@ public class TestQA {
         assertTrue(driver.findElement(By.xpath("//div[@class='col-12 mt-4 col-md-3']")).isDisplayed());
         assertTrue(driver.findElement(By.xpath("(//img[@src='/images/Toolsqa.jpg'])[2]")).isDisplayed());
 
-        JavascriptExecutor js2 = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
-
-
 
         String currentTables = driver.getWindowHandle();
         driver.findElement(By.xpath("//a[@href='http://demoqa.com']")).click();
@@ -264,7 +252,6 @@ public class TestQA {
         String actualTitle = driver.getTitle();
 
         assertEquals(actualTitle, expectedTitle);
-
-
+        driver.navigate().back();
     }
 }
