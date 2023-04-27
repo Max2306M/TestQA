@@ -1,13 +1,12 @@
 package amazonTest;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class testamazon {
+public class TestAmazon {
 
     @Test
     public void checkSearchOnAmazon() {
@@ -21,7 +20,5 @@ public class testamazon {
         Assert.assertTrue((driver.getTitle().contains("iPhone 13")));
         driver.quit();
     }
-
-
-    }
+}
 
